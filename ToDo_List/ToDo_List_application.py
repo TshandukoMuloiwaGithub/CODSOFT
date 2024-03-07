@@ -2,36 +2,31 @@ from tkinter import *
 import tkinter as tk
 import json as j
 
-main_window = tk.Tk()
+
+
 todo = 'todo.json'
+
+
 #Creating instance of TK main window
-def new_todo_list(items):
+def break_it_down(new_list_):
     '''
     This function takes given items
-    returns the items to be saved on json file
+    returns the items as list
     '''
-    with open(todo,'w') as j_file:
-        j.dump(j_file,items)
-    
+    print(new_list_)
+
 def new_todo():
     '''
     Function to be executed when user clicks on new todo list
+    opens another window waiting for it to complete its new items list update
     '''
+    try:
+        main_window.destroy()
+        import create_new_todo_list
 
-    main_window.destroy()
-    new_to_do_window = tk.Tk()
-    new_to_do_window.title("Create ToDo List")
-    new_to_do_window.geometry("300x200")
+    except:
+        print("Faile to create new todo list")
     
-    
-    tk.Label(new_to_do_window ,text="Seperate items by comma or nextline",bg='red').grid(row=0,column=0)
-    tk.Label(new_to_do_window,text="Enter Todo List items:").grid(row=1,column=0)
-    
-
-    #Saving user items ---- Continue
-    todo_items = tk.Text(new_to_do_window,width=30,height=5).grid(row=2,column=0)
-    
-    tk.Button(new_to_do_window,text='Create List',bg='green',command='').grid(row=3,column=0,padx=0)    
 
 def Update_todo():
     '''
@@ -61,6 +56,8 @@ def start():
     """
     This function calls all the necessary function for our application
     """
+    global main_window
+    main_window = tk.Tk()
     #Main window instance configurations/properties
     main_window.config(bg='lightblue')
     main_window.title("ToDo Application")
@@ -81,8 +78,19 @@ def start():
     btn_track.grid(row=6, column=3)
     #
     btn_close = tk.Button(main_window, text='Quit', bg='Red', command=quit)
+
     btn_close.grid(row=7, column=3, pady=0, padx=0)
     main_window.mainloop()
+    
+    if input('Quit ?').lower()=='y':
+        return None
+    else:
+        return ''
 
-if __name__ == "__main__":
-    start()
+loop = ''
+while True:
+    loop = start()
+    print(loop)
+    if loop == None:
+        print("Goodbye")
+        break
