@@ -17,7 +17,7 @@ def new_todo():
         import create_new_todo_list
         
     except:
-        print("Faile to create new todo list")
+        print("Failed to create new todo list")
     
 
 def Update_todo():
@@ -33,8 +33,11 @@ def track_todo():
     '''
     Function to be executed when user clicks on track todo list
     '''
-    main_window.destroy()
-    import Track_List
+    try:
+        main_window.destroy()
+        import Track_List
+    except:
+        print("Failed to view todo list for Tracking")
 
 def quit():
     '''
