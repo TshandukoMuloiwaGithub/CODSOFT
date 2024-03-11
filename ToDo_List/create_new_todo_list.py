@@ -56,12 +56,21 @@ def read_from_json():
 
 #Try to write or staore entered into a data file
 def write_to_json(items_list):
-    ''
-    with open("todo.json",'w') as json_file:
+    '''
+    This function takes the items given by the user and writes them into ajson file
+    '''
+    try:
+        with open("todo.json",'w') as json_file:
         #appending a new dictionary to the list of dictionaries
         
-        json.dump(items_list,json_file,indent=2)
-    
+            json.dump(items_list,json_file,indent=2)
+            status_label.config(text='Done deal')
+            
+    except FileNotFoundError as e:
+        print('An error occured.')
+        print('Error message:',str(e))
+
+
 # Create the main window
 root = tk.Tk()
 root.title("New Todo List")

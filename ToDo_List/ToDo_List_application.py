@@ -1,19 +1,11 @@
 from tkinter import *
 import tkinter as tk
 import json as j
+import sys
 
 
 
 todo = 'todo.json'
-
-
-#Creating instance of TK main window
-def break_it_down(new_list_):
-    '''
-    This function takes given items
-    returns the items as list
-    '''
-    print(new_list_)
 
 def new_todo():
     '''
@@ -23,7 +15,7 @@ def new_todo():
     try:
         main_window.destroy()
         import create_new_todo_list
-
+        
     except:
         print("Faile to create new todo list")
     
@@ -42,8 +34,7 @@ def track_todo():
     Function to be executed when user clicks on track todo list
     '''
     main_window.destroy()
-    track_to_do_window = tk.Tk()
-    track_to_do_window.title("Track ToDo List")
+    import Track_List
 
 def quit():
     '''
@@ -51,12 +42,14 @@ def quit():
     Executed when the user clicks quit
     '''
     main_window.destroy()
+    sys.exit()
 
 def start():
     """
     This function calls all the necessary function for our application
     """
     global main_window
+    
     main_window = tk.Tk()
     #Main window instance configurations/properties
     main_window.config(bg='lightblue')
@@ -80,17 +73,14 @@ def start():
     btn_close = tk.Button(main_window, text='Quit', bg='Red', command=quit)
 
     btn_close.grid(row=7, column=3, pady=0, padx=0)
-    main_window.mainloop()
-    
-    if input('Quit ?').lower()=='y':
-        return None
-    else:
-        return ''
 
-loop = ''
+    main_window.mainloop()
+
+    return True
+
 while True:
     loop = start()
     print(loop)
-    if loop == None:
+    if loop == '':
         print("Goodbye")
         break
