@@ -130,7 +130,6 @@ def get_items():
         try:
             track_window.destroy()
             insert_check_btns(todo_items,completed_items,count)
-            action_btns()
         except ValueError:
             
             error_window = tk.Tk()
