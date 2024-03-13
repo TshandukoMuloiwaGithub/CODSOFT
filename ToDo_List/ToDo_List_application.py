@@ -36,6 +36,7 @@ def track_todo():
     try:
         main_window.destroy()
         import Track_List
+        
     except:
         print("Failed to view todo list for Tracking")
 
@@ -76,7 +77,7 @@ def start():
     btn_close = tk.Button(main_window, text='Quit', bg='Red', command=quit)
 
     btn_close.grid(row=7, column=3, pady=0, padx=0)
-
+    
     main_window.mainloop()
 
     return True

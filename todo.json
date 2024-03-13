@@ -1,26 +1,27 @@
 [
   {
-    "item": "Item 1",
+    "title": "Create Repo",
+    "item_no": 1,
+    "status": 1
+  },
+  {
+    "title": "Clear Recycle Bin",
+    "item_no": 2,
+    "status": 1
+  },
+  {
+    "title": "Debugging hakku",
+    "item_no": 3,
     "status": 0
   },
   {
-    "item": "Item 2",
-    "status": 0
+    "title": "Reinstall hakku`s dependencies",
+    "item_no": 4,
+    "status": 1
   },
   {
-    "item": "Item 3",
-    "status": 0
-  },
-  {
-    "item": "Item 4",
-    "status": 0
-  },
-  {
-    "item": "Item 5",
-    "status": 0
-  },
-  {
-    "item": "Item 6",
+    "title": "Reviews",
+    "item_no": 5,
     "status": 0
   }
 ]

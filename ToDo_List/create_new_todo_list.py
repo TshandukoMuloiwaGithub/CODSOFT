@@ -2,7 +2,7 @@ import tkinter as tk
 import json
 import os
 import time
-from input_manipulation import new_list_input
+from manipulation import new_list_input
 
 def user_new_list_input():
     '''
@@ -12,7 +12,7 @@ def user_new_list_input():
 
     #Get entered items as a list
     user_input_as_list = new_list_input.break_it_down(user_input)
-    items ={}
+    # items ={}
     items_list = []
 
     #Reading from json file to get existing items
@@ -23,12 +23,20 @@ def user_new_list_input():
         items_list = []
 
     for item in user_input_as_list:
+        item_no = 1
+        try:
+            item_no = int(items_list[-1]['item_no']) +1
+        except ValueError:
+            item_no = item_no
+
+        print(item_no)
         items = {
-            'item': f'{item}',
+            'title': f'{item}',
+            'item_no': item_no,
             'status': 0
         }
         items_list.append(items)
-        items = {}
+        # items = {}
     
     
     #Write new list to json
