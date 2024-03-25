@@ -29,7 +29,7 @@ def Update_todo():
     update_to_do_window = tk.Tk()
     update_to_do_window.title("Update ToDo List")
 
-def track_todo():
+def track_todo(flag=False):
     '''
     Function to be executed when user clicks on track todo list
     '''
@@ -40,6 +40,7 @@ def track_todo():
     except:
         print("Failed to view todo list for Tracking")
 
+
 def quit():
     '''
     This function will only destroy the main window
@@ -47,6 +48,7 @@ def quit():
     '''
     main_window.destroy()
     sys.exit()
+
 
 def start():
     """
@@ -56,12 +58,12 @@ def start():
     
     main_window = tk.Tk()
     #Main window instance configurations/properties
-    main_window.config(bg='lightblue')
+    main_window.config(bg='grey')
     main_window.title("ToDo Application")
     main_window.geometry("330x210")
 
     #Header of our main window
-    lbl = tk.Label(main_window,text='What would you like to do:',height=2,bg='grey')
+    lbl = tk.Label(main_window,text='ToDo List Management:',height=2,bg='grey',background='white',font=('Arial', 12,'bold'))
     lbl.grid(row=0,column=0)
 
     #Buttons
@@ -76,8 +78,8 @@ def start():
     #
     btn_close = tk.Button(main_window, text='Quit', bg='Red', command=quit)
 
-    btn_close.grid(row=7, column=3, pady=0, padx=0)
-    
+    btn_close.grid(row=7, column=0, pady=0, padx=0,sticky='w')
+
     main_window.mainloop()
 
     return True

@@ -51,7 +51,6 @@ def user_new_list_input():
     except:
         status_label.config(text="Failed to create New List",bg='red')
 
-    
 def read_from_json():
     '''
     Read json content to avoid overriding the existing info

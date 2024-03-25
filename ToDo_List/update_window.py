@@ -7,10 +7,10 @@ This function will have to pop up a window prompting user to continue/Home
 
 '''
 
-track_window = Tk()
-track_window.title("Tracking your ToDo List")
-track_window.configure(bg='blue')
-# track_window.geometry('550x300')
+update_window = Tk()
+update_window.title("Update ToDo List")
+update_window.configure(bg='blue')
+# update_window.geometry('550x300')
 count = 0
 incomplete_row = 0
 completed_row = 0
@@ -21,9 +21,7 @@ def increment(count):
     return count  + 1
 
 def call_update():
-    track_window.destroy()
-    import update_window
-    
+    ''    
 
 def get_items():
     '''
@@ -49,30 +47,24 @@ def get_items():
 
 
 def btn_upload():
-    Button(track_window,text='Update',bg='black',foreground='white',command=call_update).grid(row=count,column=column_no,sticky='w')
+    Button(update_window,text='Save Change',bg='black',foreground='white',command=call_update).grid(row=count,column=column_no,sticky='w')
 
 def upload_check_btns(incomplete_items,completed_items,count):
     '''
     This function takes all the items lists and place the items to there respected places
     '''
-    check_no = 1
-    complete_dict = {}
-    incomplete_dict ={}
     if len(incomplete_items) > 0:
         #Incomple Items
         flag_colum = True
         incomplete_row = 0
-        incomplete_items_lable = Label(track_window,text='ToDo Items:',bg='black',foreground='gold',font=('Arial',15,'italic')).grid(row=count,column=0,sticky='w')
+        incomplete_items_lable = Label(update_window,text='ToDo Items:',bg='black',foreground='gold',font=('Arial',15,'italic')).grid(row=count,column=0,sticky='w')
         count = increment(count)
         try:
             for i in incomplete_items:
                 color = random.choice(colors)
-
                 checkboxOn = IntVar() 
-                incomplete_dict[f'check_incomplete_{check_no}'] = Checkbutton(track_window,text=f'{i}',bg='red',variable=checkboxOn,state='disabled').grid(row=count,column=0,sticky='w')
-                check_no +=1
-                # checkbox = Checkbutton(track_window,text=f'{i}',bg=random.choice(colors)).grid(row=count+1,column=0,sticky='w')
-                # checkbox = Checkbutton(track_window,text=f'{i}',bg='red',variable=checkboxOn,state='disabled').grid(row=count,column=0,sticky='w')
+                # checkbox = Checkbutton(update_window,text=f'{i}',bg=random.choice(colors)).grid(row=count+1,column=0,sticky='w')
+                checkbox = Checkbutton(update_window,text=f'{i}',bg='red',variable=checkboxOn,state='normal').grid(row=count,column=0,sticky='w')
                 
                 count = increment(count)#keep increasing the count to match the row wwe are on
                 # if count == len(incomplete_items)-1:
@@ -91,16 +83,13 @@ def upload_check_btns(incomplete_items,completed_items,count):
             column_no = 2
 
         count = increment(0)
-        complete_label = Label(track_window,text='Done:',bg='black',foreground='gold',font=('Arial',15,'italic')).grid(row=count,column=column_no,sticky='w')
+        complete_label = Label(update_window,text='Done:',bg='black',foreground='gold',font=('Arial',15,'italic')).grid(row=count,column=column_no,sticky='w')
         count = increment(count)
 
         try:
             for x in completed_items:
-                complete_dict[f'check_complete_{check_no}']  = Checkbutton(track_window,text=f'{x}',bg=random.choice(colors),state='disabled').grid(row=count,column=column_no,sticky='w')
-                check_no +=1
-                # complete_checkbox = Checkbutton(track_window,text=f'{x}',bg=random.choice(colors),state='disabled').grid(row=count,column=column_no,sticky='w')
+                complete_checkbox = Checkbutton(update_window,text=f'{x}',bg='green',state='disabled').grid(row=count,column=column_no,sticky='w')
                 count = increment(count)
-
             else:
                 completed_row = count
         except ValueError:
@@ -110,7 +99,7 @@ def upload_check_btns(incomplete_items,completed_items,count):
     return incomplete_row, completed_row
 
 
-welcome_label = Label(track_window,text="Track Items",font=('Arial', 15, 'bold')).grid(row=count,column=1,sticky='w',padx=10)
+welcome_label = Label(update_window,text="Update Items",font=('Arial', 15, 'bold')).grid(row=count,column=1,sticky='w',padx=10)
 count = increment(count)
 
 incomplete_itmes,completed_items = get_items()
@@ -131,5 +120,5 @@ else:
 
 
 btn_upload()
-track_window.mainloop()
+update_window.mainloop()
 
