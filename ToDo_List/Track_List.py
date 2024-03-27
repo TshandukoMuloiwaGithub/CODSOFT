@@ -54,39 +54,29 @@ def btn_upload():
 def upload_check_btns(incomplete_items,completed_items,count):
     '''
     This function takes all the items lists and place the items to there respected places
-    '''
-    check_no = 1
-    complete_dict = {}
-    incomplete_dict ={}
+    '''    
     if len(incomplete_items) > 0:
         #Incomple Items
         flag_colum = True
         incomplete_row = 0
         incomplete_items_lable = Label(track_window,text='ToDo Items:',bg='black',foreground='gold',font=('Arial',15,'italic')).grid(row=count,column=0,sticky='w')
         count = increment(count)
-        try:
-            for i in incomplete_items:
-                color = random.choice(colors)
 
+        try:
+
+            for i in incomplete_items:
                 checkboxOn = IntVar() 
-                incomplete_dict[f'check_incomplete_{check_no}'] = Checkbutton(track_window,text=f'{i}',bg='red',variable=checkboxOn,state='disabled').grid(row=count,column=0,sticky='w')
-                check_no +=1
-                # checkbox = Checkbutton(track_window,text=f'{i}',bg=random.choice(colors)).grid(row=count+1,column=0,sticky='w')
-                # checkbox = Checkbutton(track_window,text=f'{i}',bg='red',variable=checkboxOn,state='disabled').grid(row=count,column=0,sticky='w')
-                
+                checkbox = Checkbutton(track_window,text=f'{i}',bg='red',variable=checkboxOn,state='active').grid(row=count,column=0,sticky='w')
                 count = increment(count)#keep increasing the count to match the row wwe are on
-                # if count == len(incomplete_items)-1:
             else:
                 incomplete_row = count
-            #     count +=1
-            # count +=1
+            
         except ValueError:
             print("Failed to Display your Incomplete items")
     
 
     if len(completed_items)>0:
         #Completed items
-
         if flag_colum:
             column_no = 2
 
@@ -95,12 +85,10 @@ def upload_check_btns(incomplete_items,completed_items,count):
         count = increment(count)
 
         try:
-            for x in completed_items:
-                complete_dict[f'check_complete_{check_no}']  = Checkbutton(track_window,text=f'{x}',bg=random.choice(colors),state='disabled').grid(row=count,column=column_no,sticky='w')
-                check_no +=1
-                # complete_checkbox = Checkbutton(track_window,text=f'{x}',bg=random.choice(colors),state='disabled').grid(row=count,column=column_no,sticky='w')
-                count = increment(count)
 
+            for x in completed_items:
+                complete_checkbox = Checkbutton(track_window,text=f'{x}',bg=random.choice(colors),state='disabled').grid(row=count,column=column_no,sticky='w')
+                count = increment(count)
             else:
                 completed_row = count
         except ValueError:
