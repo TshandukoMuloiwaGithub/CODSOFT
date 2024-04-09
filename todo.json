@@ -1,57 +1,27 @@
 [
   {
-    "title": "Create Repo",
+    "title": "one",
     "item_no": 1,
-    "status": 1
+    "status": 0
   },
   {
-    "title": "Clear Recycle Bin",
+    "title": "two",
     "item_no": 2,
-    "status": 1
+    "status": 0
   },
   {
-    "title": "Debugging hakku",
+    "title": "three",
     "item_no": 3,
     "status": 0
   },
   {
-    "title": "Reinstall hakku`s dependencies",
+    "title": "four",
     "item_no": 4,
-    "status": 1
+    "status": 0
   },
   {
-    "title": "Reviews",
+    "title": "five",
     "item_no": 5,
-    "status": 0
-  },
-  {
-    "title": "Buy weed",
-    "item_no": 6,
-    "status": 0
-  },
-  {
-    "title": " Bus Fee",
-    "item_no": 7,
-    "status": 0
-  },
-  {
-    "title": " Finish up",
-    "item_no": 8,
-    "status": 0
-  },
-  {
-    "title": "Clean",
-    "item_no": 9,
-    "status": 0
-  },
-  {
-    "title": "Accomapany Thando home",
-    "item_no": 10,
-    "status": 0
-  },
-  {
-    "title": " smoke weed",
-    "item_no": 11,
     "status": 0
   }
 ]
