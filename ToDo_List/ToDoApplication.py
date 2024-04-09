@@ -1,6 +1,4 @@
-#import tkinter to use in our class
 from tkinter import *
-from tkinter import messagebox
 
 class ToDoApp(Tk):
     '''
@@ -23,8 +21,11 @@ class ToDoApp(Tk):
         lbl = Label(self,text='ToDo List Management',height=2,bg='black',width=25,fg='white',font=('Arial', 12,'bold'))
         lbl.grid(row=0,column=0)
 
-        #Buttons
+        #Call and widget functions
         def callnewTodo():
+            '''
+            Destroy main window to give room to the new window
+            '''
             self.destroy()
             import ToDo_New as ToDo_New
             ToDo_New.start()
@@ -37,6 +38,7 @@ class ToDoApp(Tk):
             '''
             This function import our update window pop up
             '''
+            self.destroy()
             import ToDo_Update as ToDo_Update
 
         btn_update = Button(self, text='Update To-Do List', foreground='green',width='15',command=callupdateTodo)
@@ -44,7 +46,12 @@ class ToDoApp(Tk):
 
         #
         def calltrackTodo():
+            '''
+            Calling Track ToDo window
+            '''
+            self.destroy()
             import Todo_Track as Todo_Track
+
         btn_track = Button(self, text='Track To-Do List', foreground='Red',width=15,command=calltrackTodo)
         btn_track.grid(row=3, column=0)
         
